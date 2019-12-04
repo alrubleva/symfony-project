@@ -22,7 +22,7 @@ class ProduitController extends AbstractController
     {
         $produits=$produitRepository->findAll();
         //dump dans la console (barre en bas d'écran)
-        dump($produits);
+        //dump($produits);
         //dump sur la page
         //dd($produits);
         
