@@ -6,6 +6,7 @@ use App\Entity\Categorie;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,6 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CategorieController extends AbstractController
 {
+    /**
+     * @Route("/json_categorie", name="json_categorie", methods={"GET"})
+     */
+    public function jsonCategorie(CategorieRepository $categorieRepository): Response
+    {
+        //il faut le sérialiser
+        return new JsonResponse($categorieRepository->findAll());
+    }
+
     /**
      * @Route("/", name="categorie_index", methods={"GET"})
      */
